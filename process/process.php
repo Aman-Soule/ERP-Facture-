@@ -12,7 +12,7 @@
     if (isset($_POST['action']) && $_POST['action'] === 'delete') {
         $id = $_POST['id'];
 
-        if ($facture->deleteFacture($id)) {
+        if ($db->deleteFacture($id)) {
             echo "success";
         } else {
             echo "error";

@@ -15,12 +15,12 @@ $(document).ready(function() {
             { data: null, defaultContent:
                     '<a href="#" class="text-info me-2"><i class="fas fa-info-circle"></i></a>' +
                     '<a href="#" class="text-primary me-2"><i class="fas fa-edit"></i></a>' +
-                    '<a href="#" class="btn-pdf text-primary me-2"><i class="fas fa-folder-blank"></i></a>' +
+                    '<a href="#" class="btn-pdf text-primary me-2"><i class="fas fa-file-pdf"></i></a>' +
                     '<a href="#" class="text-danger me-2"><i class="fas fa-trash-alt"></i></a>'
             }
         ]
     });
-    //when we click on #battlefield
+    //when we click on #battlefield Ajout d'une facture
     $("#create").click(function(e) {
         let formOrder = $("#formOrder");
         if (formOrder[0].checkValidity()) {
@@ -83,49 +83,79 @@ $(document).ready(function() {
 
 
 
-let selectedDeleteId = null; // stocker l'ID de la facture à supprimer
+let selectedDeleteId = null;
+let deleteModal = null;
+let triggerElement = null;
 
-// Clic sur le bouton poubelle
-// Clic sur le bouton poubelle
+$(document).ready(function() {
+    const modalEl = document.getElementById('confirmDeleteModal');
+    deleteModal = new bootstrap.Modal(modalEl);
+
+    modalEl.addEventListener('hidden.bs.modal', function() {
+        if (triggerElement) {
+            setTimeout(() => {
+                triggerElement.focus();
+                triggerElement = null;
+            }, 100);
+        }
+        selectedDeleteId = null;
+    });
+});
+
 $('#factureTable tbody').on('click', 'a.text-danger', function (e) {
     e.preventDefault();
     const data = table.row($(this).parents('tr')).data();
     if (!data) return;
 
     selectedDeleteId = data.id;
-
-    const modalEl = document.getElementById('confirmDeleteModal');
-    const myModal = new bootstrap.Modal(modalEl);
-    myModal.show();
-
-    // Quand la modal se ferme, replacer le focus sur le bouton déclencheur
-    modalEl.addEventListener('hidden.bs.modal', () => {
-        $(this).focus();
-    }, { once: true });
+    triggerElement = this;
+    console.log("ID à supprimer:", selectedDeleteId); // DEBUG
+    deleteModal.show();
 });
 
-// Confirmation de suppression
 $('#confirmDelete').on('click', function () {
-    if (!selectedDeleteId) return;
+    if (!selectedDeleteId) {
+        alert("Aucun ID sélectionné");
+        return;
+    }
+
+    console.log("Envoi suppression pour ID:", selectedDeleteId); // DEBUG
+
+    // Enlever le focus
+    this.blur();
 
     $.ajax({
-        type: 'post',
+        type: 'POST',
         url: 'process/process.php',
-        data: { action: 'delete', id: selectedDeleteId },
+        data: {
+            action: 'delete',
+            id: selectedDeleteId
+        },
+        dataType: 'text', // Forcer le type texte
         success: function (response) {
-            if (response === "success") {
+            console.log("Réponse brute:", response);
+            console.log("Réponse trim:", response.trim());
+
+            // Comparaison plus robuste
+            if (response.trim() === "success") {
                 alert("Facture supprimée avec succès !");
-                table.ajax.reload(null, false); // rafraîchir sans reset pagination
+                table.ajax.reload(null, false);
             } else {
-                alert("Erreur lors de la suppression.");
+                alert("Erreur du serveur: " + response);
             }
+            setTimeout(() => deleteModal.hide(), 100);
+        },
+        error: function(xhr, status, error) {
+            console.error("Erreur AJAX:", {
+                status: status,
+                error: error,
+                responseText: xhr.responseText,
+                statusText: xhr.statusText
+            });
+            alert("Erreur de connexion: " + error + "\nDétails dans la console");
+            setTimeout(() => deleteModal.hide(), 100);
         }
     });
-
-    // Fermer la modal avec Bootstrap 5
-    const modalEl = document.getElementById('confirmDeleteModal');
-    const modal = bootstrap.Modal.getInstance(modalEl);
-    modal.hide();
 });
 
 

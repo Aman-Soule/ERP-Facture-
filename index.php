@@ -18,7 +18,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><i class="fas fa-user-secret"></i>ERP</a>
+            <a class="navbar-brand text-primary" href="#"><i class="fas fa-file-invoice-dollar"></i>FACT-PRO</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -145,7 +145,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" id="create" name="create">Ajouter <i class="fas fa-plus"></i></button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="create" name="create">Ajouter <i class="fas fa-plus"></i></button>
             </div>
         </div>
     </div>
