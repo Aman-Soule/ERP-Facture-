@@ -68,7 +68,7 @@
         <div class="col-md-6">
             <div class="d-flex justify-content-end">
                 <button class="btn btn-primary btn-sm me-3" data-bs-toggle="modal" data-bs-target="#createModal"><i class="fas fa-folder-plus"></i>Nouveau</button>
-                <a href="" class="btn btn-success btn-sm" id="exporter"><i class="fas fa-table"></i>Exporter</a>
+                <a href="process/process.php?action=export" class="btn btn-success btn-sm" id="exporter"><i class="fas fa-table"></i>Exporter</a>
             </div>
         </div>
     </div>
@@ -146,6 +146,25 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary" id="create" name="create">Ajouter <i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Confirmation Suppression -->
+<!--inert rend un élément et ses descendants non focusables et les retire du cycle d’accessibilité.-->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="confirmDeleteLabel">Confirmation de suppression</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+                Voulez-vous vraiment supprimer cette facture ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">Oui, supprimer</button>
             </div>
         </div>
     </div>

@@ -1,6 +1,7 @@
+let table;
 $(document).ready(function() {
     // Initialisation unique de DataTable
-    const table = $('#factureTable').DataTable({
+    table = $('#factureTable').DataTable({
         destroy: true,
         ajax: 'factures.php',
         columns: [
@@ -79,3 +80,53 @@ $(document).ready(function() {
         doc.save(`facture_${data.id}.pdf`);
     });
 });
+
+
+
+let selectedDeleteId = null; // stocker l'ID de la facture à supprimer
+
+// Clic sur le bouton poubelle
+// Clic sur le bouton poubelle
+$('#factureTable tbody').on('click', 'a.text-danger', function (e) {
+    e.preventDefault();
+    const data = table.row($(this).parents('tr')).data();
+    if (!data) return;
+
+    selectedDeleteId = data.id;
+
+    const modalEl = document.getElementById('confirmDeleteModal');
+    const myModal = new bootstrap.Modal(modalEl);
+    myModal.show();
+
+    // Quand la modal se ferme, replacer le focus sur le bouton déclencheur
+    modalEl.addEventListener('hidden.bs.modal', () => {
+        $(this).focus();
+    }, { once: true });
+});
+
+// Confirmation de suppression
+$('#confirmDelete').on('click', function () {
+    if (!selectedDeleteId) return;
+
+    $.ajax({
+        type: 'post',
+        url: 'process/process.php',
+        data: { action: 'delete', id: selectedDeleteId },
+        success: function (response) {
+            if (response === "success") {
+                alert("Facture supprimée avec succès !");
+                table.ajax.reload(null, false); // rafraîchir sans reset pagination
+            } else {
+                alert("Erreur lors de la suppression.");
+            }
+        }
+    });
+
+    // Fermer la modal avec Bootstrap 5
+    const modalEl = document.getElementById('confirmDeleteModal');
+    const modal = bootstrap.Modal.getInstance(modalEl);
+    modal.hide();
+});
+
+
+//Exportation

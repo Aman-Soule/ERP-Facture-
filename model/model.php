@@ -34,7 +34,9 @@ class Database
 //Classe facture
 class Facture {
     private $conn;
+    private $pdo;
 
+    
     public function __construct() {
         $db = new Database();
         $this->conn = $db->getConnection();
@@ -47,6 +49,19 @@ class Facture {
         return $stmt->fetchAll();
     }
 
+    // ✅ Méthode pour compter les factures
+    public function countBills() {
+        $stmt = $this->pdo->query("SELECT COUNT(*) FROM factures");
+        return $stmt->fetchColumn();
+    }
+
+    // ✅ Méthode pour lire toutes les factures
+    public function read() {
+        $stmt = $this->pdo->query("SELECT * FROM factures");
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    
     //Fonction de création d'une facture
     public function createFacture($customer, $cashier, $amount, $received, $returned, $status) {
         // Préparer la requête d'insertion
@@ -68,5 +83,20 @@ class Facture {
         // Exécuter et retourner le résultat
         return $stmt->execute();
     }
+    public function deleteFacture($id) {
+        // Préparer la requête de suppression
+        $sql = "DELETE FROM factures WHERE id = :id";
+
+        // Préparer avec PDO
+        $stmt = $this->conn->prepare($sql);
+
+        // Binder le paramètre
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+        // Exécuter et retourner le résultat
+        return $stmt->execute();
+    }
+
+
 
 }
