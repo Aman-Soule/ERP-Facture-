@@ -141,7 +141,7 @@ $('#confirmDelete').on('click', function () {
                 alert("Facture supprimée avec succès !");
                 table.ajax.reload(null, false);
             } else {
-                alert("Erreur du serveur: " + response);
+                alert("Erreur du serveur : " + response);
             }
             setTimeout(() => deleteModal.hide(), 100);
         },
