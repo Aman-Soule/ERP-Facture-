@@ -99,26 +99,7 @@
 </section>
 
 
-//Table employe
-<div class="table-responsive" id="orderTable">
-    <table class="table table-striped table-hover" id="employeTable">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Prenom</th>
-            <th scope="col">Role</th>
-            <th scope="col">Actif</th>
-            <th scope="col">Action</th>
 
-        </tr>
-        </thead>
-
-        <tbody>
-        <!--                    DataTables va remplir lui meme ce champ -->
-        </tbody>
-    </table>
-</div>
 
 <!-- Modal Ajout Facture -->
 <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
