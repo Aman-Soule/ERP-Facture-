@@ -30,7 +30,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } catch(PDOException $e) {
         die("Erreur: " . $e->getMessage());
     }
-} else {
-    die("Accès non autorisé");
 }
-?>

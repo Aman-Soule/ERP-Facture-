@@ -22,5 +22,3 @@ function allUsers(): array
     $users = $stmt->fetchAll();
     return $users;
 }
-?>
-
