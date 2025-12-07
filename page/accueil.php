@@ -1,10 +1,3 @@
-<?php
-// Vérifier que l'utilisateur est connecté (sécurité)
-//if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
-//    header('Location: ?page=login');
-//    exit;
-//}
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -161,7 +154,7 @@
                         <i class="fas fa-calendar-day me-2"></i><?php echo date('d/m/Y'); ?>
                     </span>
                     <h1 class="display-5 fw-bold mb-3">
-                        Bonjour, <?php echo htmlspecialchars($_SESSION['username'] ?? 'Utilisateur'); ?> !
+                        Bonjour, <?php echo htmlspecialchars($_SESSION['nom']); ?> !
                         <i class="fas fa-hand-wave ms-2"></i>
                     </h1>
                     <p class="lead mb-0 opacity-75">

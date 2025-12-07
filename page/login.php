@@ -1,11 +1,3 @@
-<?php
-session_start();
-// Si déjà connecté, rediriger vers la page principale
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-    header('Location: dashboard.php');
-    exit;
-}
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -76,7 +68,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     </div>
 
     <div class="login-body">
-        <form id="loginForm" method="POST">
+        <form action="../process/login.php" method="POST">
             <?php if (isset($_GET['error'])): ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Identifiants incorrects
@@ -85,11 +77,11 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
             <?php endif; ?>
 
             <div class="mb-3">
-                <label for="username" class="form-label">Nom d'utilisateur</label>
+                <label for="username" class="form-label">Email</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="fas fa-user"></i></span>
-                    <input type="text" class="form-control" id="username" name="username"
-                           placeholder="Entrez votre nom d'utilisateur" required>
+                    <input type="text" class="form-control" id="email" name="email"
+                           placeholder="Entrez votre email" required>
                 </div>
             </div>
 
@@ -121,42 +113,42 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    // Toggle password visibility
-    document.getElementById('togglePassword').addEventListener('click', function() {
-        const password = document.getElementById('password');
-        const icon = this.querySelector('i');
-        if (password.type === 'password') {
-            password.type = 'text';
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
-        } else {
-            password.type = 'password';
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
-        }
-    });
-
-    // Form submission
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-
-        // Animation du bouton
-        const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Connexion...';
-        submitBtn.disabled = true;
-
-        // Simulation de vérification (à remplacer par une vraie requête AJAX)
-        setTimeout(() => {
-            // Pour l'exemple, on accepte tout
-            // En réalité, il faudrait envoyer une requête AJAX au serveur
-            window.location.href = 'dashboard.php';
-        }, 1000);
-    });
-</script>
+<!--<script>-->
+<!--    // Toggle password visibility-->
+<!--    document.getElementById('togglePassword').addEventListener('click', function() {-->
+<!--        const password = document.getElementById('password');-->
+<!--        const icon = this.querySelector('i');-->
+<!--        if (password.type === 'password') {-->
+<!--            password.type = 'text';-->
+<!--            icon.classList.remove('fa-eye');-->
+<!--            icon.classList.add('fa-eye-slash');-->
+<!--        } else {-->
+<!--            password.type = 'password';-->
+<!--            icon.classList.remove('fa-eye-slash');-->
+<!--            icon.classList.add('fa-eye');-->
+<!--        }-->
+<!--    });-->
+<!---->
+<!--    // Form submission-->
+<!--    document.getElementById('loginForm').addEventListener('submit', function(e) {-->
+<!--        e.preventDefault();-->
+<!---->
+<!--        const username = document.getElementById('username').value;-->
+<!--        const password = document.getElementById('password').value;-->
+<!---->
+<!--        // Animation du bouton-->
+<!--        const submitBtn = this.querySelector('button[type="submit"]');-->
+<!--        const originalText = submitBtn.innerHTML;-->
+<!--        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Connexion...';-->
+<!--        submitBtn.disabled = true;-->
+<!---->
+<!--        // Simulation de vérification (à remplacer par une vraie requête AJAX)-->
+<!--        setTimeout(() => {-->
+<!--            // Pour l'exemple, on accepte tout-->
+<!--            // En réalité, il faudrait envoyer une requête AJAX au serveur-->
+<!--            window.location.href = 'dashboard.php';-->
+<!--        }, 1000);-->
+<!--    });-->
+<!--</script>-->
 </body>
 </html>
