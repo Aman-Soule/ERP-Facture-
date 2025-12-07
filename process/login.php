@@ -23,12 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['nom'] = $user['nom'];
-            echo "Connexion réussie! Bienvenue " . $user['nom'];
-            // Redirection
             header('Location: ../index.php');
             exit();
-        } else {
-            echo "Identifiants incorrects!";
         }
 
     } catch(PDOException $e) {

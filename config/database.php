@@ -8,7 +8,6 @@ function getConnection() {
     try {
         $dsn = "pgsql:host=$host;port=5432;dbname=$dbname;sslmode=require";
         $conn = new PDO($dsn, $user, $password);
-        echo "Bien !";
         return $conn;
     } catch(PDOException $e) {
         die("Erreur connexion: " . $e->getMessage());
@@ -23,4 +22,5 @@ function allUsers(): array
     $users = $stmt->fetchAll();
     return $users;
 }
+?>
 
