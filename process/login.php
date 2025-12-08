@@ -26,6 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: ../index.php');
             exit();
         }
+        else{
+            header('Location: ../page/login.php?error=Identifiants incorrects');
+            exit();
+        }
 
     } catch(PDOException $e) {
         die("Erreur: " . $e->getMessage());

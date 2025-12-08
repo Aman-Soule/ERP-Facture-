@@ -1,3 +1,9 @@
+<?php
+// En haut du fichier login.php
+if (isset($_GET['error'])) {
+    $error_message = htmlspecialchars($_GET['error']);
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -69,13 +75,12 @@
 
     <div class="login-body">
         <form action="../process/login.php" method="POST">
-            <?php if (isset($_GET['error'])): ?>
+            <?php if (isset($error_message)) { ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Identifiants incorrects
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-            <?php endif; ?>
-
+            <?php } ?>
             <div class="mb-3">
                 <label for="username" class="form-label">Email</label>
                 <div class="input-group">

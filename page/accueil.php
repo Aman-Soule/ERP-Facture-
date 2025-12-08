@@ -1,3 +1,7 @@
+<?php
+
+require_once("process/login.php");
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
