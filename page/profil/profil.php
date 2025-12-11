@@ -102,25 +102,25 @@
                 <div class="card-body">
                     <div class="row text-center">
                         <div class="col-md-3 col-6 mb-4">
-                            <div class="stat-circle bg-primary bg-opacity-10 text-primary">
+                            <div class="stat-circle bg-primary bg-opacity-10 text-white">
                                 <span class="display-6 fw-bold">142</span>
                                 <small>Cours</small>
                             </div>
                         </div>
                         <div class="col-md-3 col-6 mb-4">
-                            <div class="stat-circle bg-success bg-opacity-10 text-success">
+                            <div class="stat-circle bg-success bg-opacity-10 text-white">
                                 <span class="display-6 fw-bold">48</span>
                                 <small>Clients</small>
                             </div>
                         </div>
                         <div class="col-md-3 col-6 mb-4">
-                            <div class="stat-circle bg-warning bg-opacity-10 text-warning">
+                            <div class="stat-circle bg-warning bg-opacity-10 text-white">
                                 <span class="display-6 fw-bold">94%</span>
                                 <small>Taux de paiement</small>
                             </div>
                         </div>
                         <div class="col-md-3 col-6 mb-4">
-                            <div class="stat-circle bg-info bg-opacity-10 text-info">
+                            <div class="stat-circle bg-info bg-opacity-10 text-white">
                                 <span class="display-6 fw-bold">28</span>
                                 <small>Projets</small>
                             </div>
