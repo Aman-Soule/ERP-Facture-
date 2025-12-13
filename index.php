@@ -13,7 +13,7 @@ if (isset($_SESSION['user_id'])) {
     // Si connecté, afficher le header
     include_once("page/inc/header.php");
     include_once("page/inc/nav.php");
-
+    $users = allUsers();
     // Router vers la page appropriée
     switch($p) {
         case 'accueil':
@@ -28,6 +28,9 @@ if (isset($_SESSION['user_id'])) {
         case 'profil':
             include_once("page/profil/profil.php");
             break;
+        case 'admin':
+            include_once("page/admin/admin.php");
+            break;
         case 'parametre':
             include_once("page/parametre/parametre.php");
             break;
@@ -37,6 +40,7 @@ if (isset($_SESSION['user_id'])) {
             header("Location: index.php");
             exit();
             break;
+
         default:
             // Page par défaut (accueil)
             include_once("page/accueil.php");

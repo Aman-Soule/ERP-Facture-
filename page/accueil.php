@@ -275,25 +275,25 @@
                     <div class="card-body">
                         <div class="row g-3">
                             <div class="col-md-4">
-                                <a href="?page=factures&action=create" class="text-decoration-none">
+                                <a href="?page=cours" class="text-decoration-none">
                                     <div class="quick-action-card text-center">
                                         <div class="quick-action-icon bg-primary bg-opacity-10 text-primary mx-auto">
                                             <i class="fas fa-plus"></i>
                                         </div>
-                                        <h5 class="mb-2">Nouvelle Facture</h5>
-                                        <p class="text-muted small mb-0">Créer une nouvelle facture</p>
+                                        <h5 class="mb-2">Nouveu cours</h5>
+                                        <p class="text-muted small mb-0">Ajouter un nouveau cours</p>
                                     </div>
                                 </a>
                             </div>
 
                             <div class="col-md-4">
-                                <a href="?page=factures" class="text-decoration-none">
+                                <a href="?page=cours" class="text-decoration-none">
                                     <div class="quick-action-card text-center">
                                         <div class="quick-action-icon bg-success bg-opacity-10 text-success mx-auto">
                                             <i class="fas fa-list"></i>
                                         </div>
-                                        <h5 class="mb-2">Voir Factures</h5>
-                                        <p class="text-muted small mb-0">Liste complète des factures</p>
+                                        <h5 class="mb-2">Voir tout les cours</h5>
+                                        <p class="text-muted small mb-0">Liste complète des cours</p>
                                     </div>
                                 </a>
                             </div>
@@ -311,37 +311,37 @@
                             </div>
 
                             <div class="col-md-4">
-                                <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#reportModal">
+                                <a href="?page=progression" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#reportModal">
                                     <div class="quick-action-card text-center">
                                         <div class="quick-action-icon bg-warning bg-opacity-10 text-warning mx-auto">
                                             <i class="fas fa-chart-bar"></i>
                                         </div>
                                         <h5 class="mb-2">Rapports</h5>
-                                        <p class="text-muted small mb-0">Analyses et statistiques</p>
+                                        <p class="text-muted small mb-0">Analyses et progression</p>
                                     </div>
                                 </a>
                             </div>
 
                             <div class="col-md-4">
-                                <a href="#" class="text-decoration-none">
+                                <a href="?page=cours" class="text-decoration-none">
                                     <div class="quick-action-card text-center">
                                         <div class="quick-action-icon bg-danger bg-opacity-10 text-danger mx-auto">
                                             <i class="fas fa-users"></i>
                                         </div>
                                         <h5 class="mb-2">Clients</h5>
-                                        <p class="text-muted small mb-0">Gérer les clients</p>
+                                        <p class="text-muted small mb-0">Gérer les cours</p>
                                     </div>
                                 </a>
                             </div>
 
                             <div class="col-md-4">
-                                <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#settingsModal">
+                                <a href="?page=parametre" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#settingsModal">
                                     <div class="quick-action-card text-center">
                                         <div class="quick-action-icon bg-secondary bg-opacity-10 text-secondary mx-auto">
                                             <i class="fas fa-cog"></i>
                                         </div>
                                         <h5 class="mb-2">Paramètres</h5>
-                                        <p class="text-muted small mb-0">Configurer l'application</p>
+                                        <p class="text-muted small mb-0">Configurer votre espace</p>
                                     </div>
                                 </a>
                             </div>
@@ -443,7 +443,7 @@
                         </div>
                     </div>
                     <div class="card-footer bg-white border-0 text-center">
-                        <a href="#" class="btn btn-outline-primary btn-sm">
+                        <a href="?page=cours" class="btn btn-outline-primary btn-sm">
                             <i class="fas fa-list me-1"></i> Voir toutes les activités
                         </a>
                     </div>

@@ -26,7 +26,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true" hidden>Disabled</a>
+                        <a class="nav-link" href="?page=admin" tabindex="-1" aria-disabled="true" <?= isset($_SESSION['user']) && $_SESSION['idrolef'] == 1 ? "" : "hidden" ?>>Administrateur</a>
                     </li>
                 </ul>
                 <form class="d-flex">

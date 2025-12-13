@@ -19,6 +19,5 @@ function allUsers(): array
     $conn = getConnection();
     $stmt = $conn->prepare("SELECT * FROM utilisateurs");
     $stmt->execute();
-    $users = $stmt->fetchAll();
-    return $users;
+    return $stmt->fetchAll();
 }
